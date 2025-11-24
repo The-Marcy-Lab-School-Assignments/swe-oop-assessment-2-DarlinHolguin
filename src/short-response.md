@@ -20,7 +20,9 @@ Provide a code snippet to illustrate _encapsulation_.
 
 ## Response 1
 
-**Encapsulation** refers to when a class keeps its data and functions together and hides the important stuff so you can't mess with it directly. The use of private fields in the inside of the object makes it so it is protected, and so you can only make changes through the methods the class gives you.
+**Encapsulation** refers to when a class keeps its data and functions together and hides the important stuff so you can't mess with it directly. The use of private fields inside the object makes it so that it is protected, and so you can only make changes through the methods the class gives you.
+
+### Syntax example
 
 ```js
 class Player {
@@ -28,7 +30,7 @@ class Player {
 
   healPlayer(amount) {
     if (this.#health <= 100) {
-      this.#health = amount;
+      this.#health += amount;
       return `Health is now at ${this.#health}`;
     } else {
       return `Health is already at max!`;
@@ -37,7 +39,9 @@ class Player {
 }
 ```
 
-In my example `health` is the private field in a `Player` class showcasing a video game style example. `health` is made a private field utilizing the `#`
+In my example `health` is the private field in a `Player` class showcasing a video game style example. `health` is made a private field utilizing the `#`, which means that you wont be able to touch it directly and have to go through with the `healPlayer()` **method** instead.
+
+This concept is useful when programming because sometimes you don't want certain features to be publicly changed whenever the user feels like it. For example, in video games, you're not supposed to just heal your health out of nowhere, you have to use an item to heal, and the game changes your health through a method. In other words, it's helpful because it keeps certain data or features hidden so people can't just go in and change them on their own.
 
 --
 
@@ -72,9 +76,9 @@ console.log(counterB.count);
 
 ## Response 2
 
-For context, the `this` keyword refers to the object that the method is called on. In the provided code snippet example above, the `this` keyword would be referring to the instance of the `Counter` class that is being assigned on `counterA` &`counterB`.
+For context, the `this` keyword refers to the object that the method is called on. In the provided code snippet example above, the `this` keyword would be referring to the instance of the `Counter` class that is being assigned to `counterA` &`counterB`.
 
-### syntax highlight
+### Syntax highlight
 
 ```js
 const counterA = new Counter();
@@ -94,9 +98,9 @@ In your own words, explain what **polymorphism** means in OOP. Provide an exampl
 
 ## Response 3
 
-**Polymorphism** is when different classes follow the same **interface**, meaning they have the same method names, but each class does its own thing. You can call the same method on different objects, and they’ll all respond in their own way while still following that shared interface.
+**Polymorphism** is when different classes follow the same **interface**, meaning they have the same method names, but each class does its own thing. You can call the same method on different objects, and they’ll all respond in their own way while still following that shared interface for multiple data types.
 
-### syntax example
+### Syntax example
 
 ```js
 class Car {
@@ -122,7 +126,7 @@ class ElectricCar extends Car {
 }
 ```
 
-This demonstates polymorphism because we are using the same `start()` interface in both classes, yet we are changing the instructions for each class.
+This demonstrates polymorphism because we are using the same `start()` interface in both classes, yet we are changing the instructions for each class and returning different data.
 
 ---
 
@@ -136,7 +140,11 @@ You're building a game where players can raise different digital pets: Cats, Dog
 
 ## Response 4
 
-I would use inhertance to organize these classes by firstly
+I would use inhertance to organize these **classes** by firstly setting the **properties** to common behaviors or necessities that a pet has. Then I would make seperate subclasses from the `Pet` **parent class** `Cats`, `Dogs`, and `Birds`. Each **subclass** will also include their unique abilities. I would use **inheritance** through the `super()` keyword in order to invoke the parentclasse's properties.
+
+One advantage of using inheritance here instead of creating three separate classes is that it will prevent me from having to repeat the same lines of code for all three classes that derive from the `Pet` class.
+
+### Syntax example
 
 ```js
 class Pet {
@@ -144,6 +152,26 @@ class Pet {
     this.name = name;
     this.energy = energy;
     this.happiness = happiness;
+  }
+}
+class Cat extends Pet {
+  constructor(name, energy, happiness, hunt) {
+    super(name, energy, happiness);
+    this.hunt = hunt;
+  }
+}
+
+class Dog extends Pet {
+  constructor(name, energy, happiness, chase) {
+    super(name, energy, happiness);
+    this.chase = chase;
+  }
+}
+
+class Bird extends Pet {
+  constructor(name, energy, happiness, fly) {
+    super(name, energy, happiness);
+    this.fly = fly;
   }
 }
 ```

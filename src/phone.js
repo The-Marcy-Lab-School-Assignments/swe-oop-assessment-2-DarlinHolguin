@@ -30,7 +30,7 @@ class Phone {
   }
 }
 
-class iPhone extends Phone {
+class IPhone extends Phone {
   constructor(brand, model, password, numberOfCameras) {
     super(brand, model, password);
     this.numberOfCameras = numberOfCameras;
@@ -57,7 +57,7 @@ class iPhone extends Phone {
 // TEST YOUR CODE HERE
 
 // DO NOT REMOVE
-module.exports = { Phone, iPhone };
+module.exports = { Phone, IPhone };
 
 const flipPhone = new Phone('Nokia', 'Flip', 'TimeToLearn882');
 console.log(flipPhone); // Phone { brand: "Nokia", model: "Flip", batteryLevel: 100 }
@@ -74,7 +74,7 @@ console.log(flipPhone.batteryLevel); // 100
 console.log(flipPhone.unlock('TimeToLearn882')); // true
 console.log(flipPhone.unlock('TimeToLearn883')); // false
 
-const smartPhone = new iPhone(this.brand, 'iPhone 14 Pro', 'TimeToLearn882', 3);
+const smartPhone = new IPhone(this.brand, 'iPhone 14 Pro', 'TimeToLearn882', 3);
 
 console.log(smartPhone); // iPhone { brand: "Apple", model: "iPhone 14 Pro", numberOfCameras: 3, batteryLevel: 100}
 

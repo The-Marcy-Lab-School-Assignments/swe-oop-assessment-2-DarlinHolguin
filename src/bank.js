@@ -1,13 +1,11 @@
 class BankAccount {
   #balance = 0;
-  static #totalNumberOfAccounts;
-
   constructor(accountNumber, ownerName) {
     this.accountNumber = accountNumber;
     this.ownerName = ownerName;
-    // BankAccount.#totalNumberOfAccounts++;
+    BankAccount = #totalNumberOfAccounts++;
   }
-  // I need to return a new balance
+
   deposit(amount) {
     this.#balance += amount;
     console.log(`Deposited $${amount}. New balance: $${this.#balance}`);
@@ -15,13 +13,13 @@ class BankAccount {
   }
 
   withdraw(amount) {
-    if (amount > this.#balance) {
+    if (amount > this.balance) {
       console.log(`Withdrawal failed. Insufficient funds.`);
     } else {
       this.#balance -= amount;
       console.log(`Withdrew $${amount}. New balance: $${this.#balance}`);
     }
-    return this.#balance;
+    return this.balance;
   }
 
   getBalance() {
@@ -33,16 +31,14 @@ class BankAccount {
   }
 }
 
-class Bank extends BankAccount {
+class Bank {
   accounts = [];
-
-  constructor(accountNumber, ownerName, name) {
-    super(accountNumber, ownerName);
+  constructor(name) {
     this.name = name;
   }
 
   addAccount(account) {
-    this.accounts.push(account);
+    accounts.push(account);
   }
 
   getTotalBalance() {
@@ -54,9 +50,15 @@ class Bank extends BankAccount {
   }
 
   findAccount(accountNumber) {
-    return this.accounts.find((account) => account.accountNumber = accountNumber);
+    return accounts.find((account) => account.accountNumber = accountNumber);
   }
 }
+
+// TEST YOUR CODE HERE
+
+
+// DO NOT REMOVE
+module.exports = { BankAccount, Bank };
 
 // TEST YOUR CODE HERE
 
@@ -64,12 +66,12 @@ class Bank extends BankAccount {
 module.exports = { BankAccount, Bank };
 
 // Create a Bank instance
-const myBank = new Bank("First National");
+const myBank = new Bank('First National');
 console.log(myBank); // Bank { name: "First National" }
 
 // Create BankAccount instances
-const account1 = new BankAccount("001", "Alice");
-const account2 = new BankAccount("002", "Bob");
+const account1 = new BankAccount('001', 'Alice');
+const account2 = new BankAccount('002', 'Bob');
 console.log(account1); // BankAccount { accountNumber: "001", ownerName: "Alice" }
 console.log(account2); // BankAccount { accountNumber: "002", ownerName: "Bob" }
 
@@ -77,7 +79,7 @@ console.log(account2); // BankAccount { accountNumber: "002", ownerName: "Bob" }
 myBank.addAccount(account1);
 myBank.addAccount(account2);
 console.log(myBank.accounts);
-/* 
+/*
 [
   BankAccount { accountNumber: "001", ownerName: "Alice" },
   BankAccount { accountNumber: "002", ownerName: "Bob" }
@@ -93,8 +95,8 @@ console.log(account2.deposit(250)); // Deposited $250. New Balance: 250
 console.log(myBank.getTotalBalance()); // 300
 
 // Find a specific account by accountNumber
-console.log(myBank.findAccount("001").ownerName); // "Alice"
+console.log(myBank.findAccount('001').ownerName); // "Alice"
 
 // Create a new account and check total accounts
-new BankAccount("003", "Charlie");
-console.log("Total accounts:", BankAccount.getTotalNumberOfAccounts()); // Should be 3
+new BankAccount('003', 'Charlie');
+console.log('Total accounts:', BankAccount.getTotalNumberOfAccounts()); // Should be 3
