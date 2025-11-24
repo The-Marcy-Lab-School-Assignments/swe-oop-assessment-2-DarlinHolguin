@@ -37,7 +37,7 @@ class Player {
 }
 ```
 
-In my example `health` is the private field in a `Player` class showcasing a video game style example. In this case
+In my example `health` is the private field in a `Player` class showcasing a video game style example. `health` is made a private field utilizing the `#`
 
 --
 
