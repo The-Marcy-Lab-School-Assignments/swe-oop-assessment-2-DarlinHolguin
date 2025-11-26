@@ -1,57 +1,57 @@
 class Phone {
-  #password;
+    #password;
 
-  constructor(brand, model, password) {
-    this.brand = brand;
-    this.model = model;
-    this.#password = password;
-    this.batteryLevel = 100;
-  }
-
-  get password() {
-    return this.#password;
-  }
-
-  makeCall(number) {
-    this.batteryLevel -= 5;
-    return `Calling ${number}`;
-  }
-
-  charge() {
-    this.batteryLevel = 100;
-    return `Phone fully charged`;
-  }
-
-  unlock(password) {
-    if (this.#password === password) {
-      return true;
+    constructor(brand, model, password) {
+        this.brand = brand;
+        this.model = model;
+        this.#password = password;
+        this.batteryLevel = 100;
     }
-    return false;
-  }
+
+    get password() {
+        return this.#password;
+    }
+
+    makeCall(number) {
+        this.batteryLevel -= 5;
+        return `Calling ${number}`;
+    }
+
+    charge() {
+        this.batteryLevel = 100;
+        return `Phone fully charged`;
+    }
+
+    unlock(password) {
+        if (this.#password === password) {
+            return true;
+        }
+        return false;
+    }
 }
 
 class IPhone extends Phone {
-  constructor(brand, model, password, numberOfCameras) {
-    super(brand, model, password);
-    this.numberOfCameras = numberOfCameras;
-    this.brand = 'Apple';
-  }
-
-  makeCall(number) {
-    return `${super.makeCall(number)} using FaceTime audio`;
-  }
-
-  faceTime(name) {
-    this.batteryLevel -= 10;
-    return `Facetiming ${name}`;
-  }
-
-  unlock(password) {
-    if (!super.unlock(password)) {
-      return `Invalid password`;
+    constructor(brand, model, password, numberOfCameras) {
+        super(brand, model, password);
+        this.numberOfCameras = numberOfCameras;
+        this.brand = 'Apple';
     }
-    return true;
-  }
+
+    makeCall(number) {
+        return `${super.makeCall(number)} using FaceTime audio`;
+    }
+
+    faceTime(name) {
+        this.batteryLevel -= 10;
+        return `Facetiming ${name}`;
+    }
+
+    unlock(password) {
+        if (!super.unlock(password)) {
+            return `Invalid password`;
+        }
+        return true;
+    }
 }
 
 // TEST YOUR CODE HERE
